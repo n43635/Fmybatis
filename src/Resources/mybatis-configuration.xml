@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+
+    <!--自定义userMapper的别名-->
+    <typeAliases>
+        <typeAlias type="com.sx.po.User" alias="user"/>
+    </typeAliases>
+
+<!--
+    &lt;!&ndash;批量自定义别名&ndash;&gt;
+    <typeAliases>
+        <package name="com.sx.po"/>
+    </typeAliases>
+-->
+
+    <!--数据库源配置-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+
+        <!--通过XML文件配置-->
+        <!--<mapper resource="com/sx/mapper/userMapper.xml"/>-->
+
+
+        <!--通过注解式-->
+        <mapper class="com.sx.annocation.UserMapper"/>
+    </mappers>
+</configuration>
